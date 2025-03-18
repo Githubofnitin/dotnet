@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API Example</title>
+</head>
+<body>
+
+    <h1>Fetch API Example - Employees Data</h1>
+
+    <script>
+        // URL of the API endpoint
+       // const apiURL = "http://dummy.restapiexample.com/api/v1/employees";
+       const apiURL = "http://dummy.restapiexample.com/api/v1/employees";
+
+        // Fetch data from the API and display it on the console
+        fetch(apiURL)
+            .then(response => {
+                // Check if the response is ok (status code 200-299)
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                // Parse the JSON response
+                return response.json();
+            })
+            .then(data => {
+                // Display the retrieved data on the console
+                console.log(data);
+            })
+            .catch(error => {
+                // Catch any errors during the fetch operation
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    </script>
+
+</body>
+</html>

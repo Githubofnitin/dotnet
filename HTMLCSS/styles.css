@@ -1,0 +1,47 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #007bff;
+  color: white;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  margin-bottom: 20px;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+/* Flexbox for arranging the content */
+#timeTable, #mobileApp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+table {
+  width: 80%;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  #timeTable, #mobileApp {
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  #mobileApp {
+    display: block;
+  }
+}

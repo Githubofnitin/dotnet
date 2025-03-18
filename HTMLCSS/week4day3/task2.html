@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random User Fetch Example</title>
+</head>
+<body>
+
+    <h1>Random User Information</h1>
+    
+    <button id="getRandomUserBtn">Get Random User</button>
+
+    <div id="userInfo">
+        <!-- Random user details will be displayed here -->
+    </div>
+
+    <script>
+        // Get the button and div for displaying user info
+        const getRandomUserBtn = document.getElementById('getRandomUserBtn');
+        const userInfoDiv = document.getElementById('userInfo');
+
+        // Function to fetch and display random user data
+        getRandomUserBtn.addEventListener('click', () => {
+            // Fetch random user data from the API
+            fetch('https://randomuser.me/api/')
+                .then(response => response.json())  // Parse the response to JSON
+                .then(data => {
+                    // Extract the user info
+                    const user = data.results[0];
+                    const name = `${user.name.first} ${user.name.last}`;
+                    const email = user.email;
+                    const picture = user.picture.large;
+
+                    // Display the user info on the webpage
+                    userInfoDiv.innerHTML = `
+                        <h2>${name}</h2>
+                        <p>Email: ${email}</p>
+                        <img src="${picture}" alt="Profile Picture" width="150" />
+                    `;
+                })
+                .catch(error => {
+                    // Catch and display any errors
+                    console.error('Error fetching random user:', error);
+                    userInfoDiv.innerHTML = '<p>Error fetching user data</p>';
+                });
+        });
+    </script>
+
+</body>
+</html>
